@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -27,6 +28,7 @@ public class LoginTabFragment extends Fragment {
     EditText password;
     TextView forgetPassword;
     Button login;
+    TextInputLayout inputLayout, inputLayout1;
     FirebaseAuth fAuth;
     float v=0;
 
@@ -40,6 +42,8 @@ public class LoginTabFragment extends Fragment {
         password = view.findViewById(R.id.password);
         forgetPassword = view.findViewById(R.id.forget_password);
         login = view.findViewById(R.id.login);
+        inputLayout = view.findViewById(R.id.inputLayout);
+        inputLayout1 = view.findViewById(R.id.inputLayout1);
 
         fAuth = FirebaseAuth.getInstance();
 
@@ -70,7 +74,7 @@ public class LoginTabFragment extends Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             Toast.makeText(context, "Logged in successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getActivity().getApplicationContext(), LoginActivity.class));
+                            startActivity(new Intent(getActivity().getApplicationContext(), MainActivity.class));
                         }else{
                             Toast.makeText(context, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -83,15 +87,21 @@ public class LoginTabFragment extends Fragment {
         password.setTranslationY(800);
         forgetPassword.setTranslationY(800);
         login.setTranslationY(800);
+        inputLayout.setTranslationY(800);
+        inputLayout1.setTranslationY(800);
 
         email.setAlpha(v);
         password.setAlpha(v);
         forgetPassword.setAlpha(v);
         login.setAlpha(v);
+        inputLayout.setAlpha(v);
+        inputLayout1.setAlpha(v);
 
         email.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(300).start();
         password.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(500).start();
         forgetPassword.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(500).start();
+        inputLayout.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(500).start();
+        inputLayout1.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(500).start();
         login.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(700).start();
 
         return view;

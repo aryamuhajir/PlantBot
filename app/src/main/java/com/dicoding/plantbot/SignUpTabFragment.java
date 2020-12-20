@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -27,6 +28,7 @@ public class SignUpTabFragment extends Fragment {
     EditText namaLengkap;
     EditText email;
     Button signUp;
+    TextInputLayout inputLayout2, inputLayout3, inputLayout4, inputLayout5;
     FirebaseAuth fAuth;
     float v=0;
 
@@ -40,6 +42,10 @@ public class SignUpTabFragment extends Fragment {
         namaLengkap = view.findViewById(R.id.nama_lengkap);
         email = view.findViewById(R.id.email);
         signUp = view.findViewById(R.id.signUp);
+        inputLayout2 = view.findViewById(R.id.inputLayout2);
+        inputLayout3 = view.findViewById(R.id.inputLayout3);
+        inputLayout4 = view.findViewById(R.id.inputLayout4);
+        inputLayout5 = view.findViewById(R.id.inputLayout5);
 
         fAuth = FirebaseAuth.getInstance();
 
@@ -75,7 +81,7 @@ public class SignUpTabFragment extends Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             Toast.makeText(context, "User Created.", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getActivity().getApplicationContext(), LoginActivity.class));
+                            startActivity(new Intent(getActivity().getApplicationContext(), MainActivity.class));
                         }else{
                             Toast.makeText(context, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -90,17 +96,29 @@ public class SignUpTabFragment extends Fragment {
         namaLengkap.setTranslationY(800);
         email.setTranslationY(800);
         signUp.setTranslationY(800);
+        inputLayout2.setTranslationY(800);
+        inputLayout3.setTranslationY(800);
+        inputLayout4.setTranslationY(800);
+        inputLayout5.setTranslationY(800);
 
         username.setAlpha(v);
         password.setAlpha(v);
         namaLengkap.setAlpha(v);
         email.setAlpha(v);
         signUp.setAlpha(v);
+        inputLayout2.setAlpha(v);
+        inputLayout3.setAlpha(v);
+        inputLayout4.setAlpha(v);
+        inputLayout5.setAlpha(v);
 
         username.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(300).start();
         password.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(500).start();
         namaLengkap.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(500).start();
-        email.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(700).start();
+        email.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(500).start();
+        inputLayout2.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(500).start();
+        inputLayout3.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(500).start();
+        inputLayout4.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(500).start();
+        inputLayout5.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(500).start();
         signUp.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(700).start();
 
         return view;
