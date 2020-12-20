@@ -34,6 +34,7 @@ public class SignUpTabFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sign_up_tab, container, false);
 
+        this.context = context;
         username = view.findViewById(R.id.username);
         password = view.findViewById(R.id.password);
         namaLengkap = view.findViewById(R.id.nama_lengkap);
@@ -41,6 +42,11 @@ public class SignUpTabFragment extends Fragment {
         signUp = view.findViewById(R.id.signUp);
 
         fAuth = FirebaseAuth.getInstance();
+
+        if(fAuth.getCurrentUser() != null){
+            startActivity(new Intent(getActivity().getApplicationContext(), MainActivity.class));
+            getActivity().finish();
+        }
 
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,18 +70,17 @@ public class SignUpTabFragment extends Fragment {
                 }
 
                 // mendaftarkan user ke firebase
-                fAuth.createUserWithEmailAndPassword(Email,Pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                fAuth.createUserWithEmailAndPassword(Email, Pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(SignUpTabFragment.this, "Akun Terdaftar.", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent());
-                        }else {
-
+                            Toast.makeText(context, "User Created.", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getActivity().getApplicationContext(), LoginActivity.class));
+                        }else{
+                            Toast.makeText(context, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-
 
             }
         });
