@@ -35,7 +35,7 @@ public class LoginTabFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_login_tab, container, false);
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
 
         this.context = context;
         email = view.findViewById(R.id.email);
@@ -74,7 +74,7 @@ public class LoginTabFragment extends Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             Toast.makeText(context, "Logged in successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getActivity().getApplicationContext(), MainActivity.class));
+                            startActivity(new Intent(getActivity().getApplicationContext(), HomeActivity.class));
                         }else{
                             Toast.makeText(context, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
