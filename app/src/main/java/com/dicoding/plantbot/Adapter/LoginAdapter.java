@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.dicoding.plantbot.LoginTabFragment;
-import com.dicoding.plantbot.SignUpTabFragment;
+import com.dicoding.plantbot.Fragment.LoginTabFragment;
+import com.dicoding.plantbot.Fragment.SignUpTabFragment;
 
 public class LoginAdapter extends FragmentPagerAdapter {
 

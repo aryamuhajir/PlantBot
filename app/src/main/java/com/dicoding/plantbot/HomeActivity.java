@@ -9,10 +9,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.dicoding.plantbot.Adapter.HomeAdapter;
-import com.dicoding.plantbot.Adapter.LoginAdapter;
+import com.dicoding.plantbot.Fragment.HomeTabFragment;
+import com.dicoding.plantbot.Fragment.ProfileTabFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.tabs.TabLayout;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -27,25 +26,30 @@ public class HomeActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeTabFragment()).commit();
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment selectedFragment = null;
 
-                    switch (item.getItemId()) {
-                        case R.id.nav_home:
-                            selectedFragment = new HomeTabFragment();
-                            break;
-                        case R.id.nav_profile:
-                            selectedFragment = new ProfileTabFragment();
-                    }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+            switch (item.getItemId()){
+                case R.id.nav_home:
+                    selectedFragment = new HomeTabFragment();
+                    break;
+                case R.id.nav_profile:
+                    selectedFragment = new ProfileTabFragment();
+                    break;
+                case R.id.nav_add:
+                    selectedFragment = new ProfileTabFragment();
+                    break;
+            }
 
-                    return true;
-                }
-            };
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+
+            return true;
+        }
+    };
 
 }

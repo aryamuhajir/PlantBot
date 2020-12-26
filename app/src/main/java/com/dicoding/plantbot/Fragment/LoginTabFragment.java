@@ -1,4 +1,4 @@
-package com.dicoding.plantbot;
+package com.dicoding.plantbot.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.dicoding.plantbot.HomeActivity;
+import com.dicoding.plantbot.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
@@ -46,6 +48,10 @@ public class LoginTabFragment extends Fragment {
         inputLayout1 = view.findViewById(R.id.inputLayout1);
 
         fAuth = FirebaseAuth.getInstance();
+        if(fAuth.getCurrentUser() != null){
+            startActivity(new Intent(getActivity().getApplicationContext(), HomeActivity.class));
+            getActivity().finish();
+        }
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
