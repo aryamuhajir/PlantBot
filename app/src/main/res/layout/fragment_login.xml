@@ -83,6 +83,7 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:text="Login"
+        android:gravity="center"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"

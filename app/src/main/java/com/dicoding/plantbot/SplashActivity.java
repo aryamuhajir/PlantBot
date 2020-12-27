@@ -1,6 +1,5 @@
     package com.dicoding.plantbot;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
@@ -30,7 +29,7 @@ public class SplashActivity extends FragmentActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashActivity.this.getApplicationContext(), HomeActivity.class);
+                Intent intent = new Intent(SplashActivity.this.getApplicationContext(), LoginActivity.class);
                 SplashActivity.this.startActivity(intent);
             }
         },SPLASH_SCREEN);
