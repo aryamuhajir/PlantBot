@@ -9,4 +9,9 @@
     <color name="colorStatePressed">#4757ff</color>
     <color name="colorStateEnabled">#FF000000</color>
     <color name="colorStateNotEnabled">#FF000000</color>
+
+    <color name="color1">#cfffcc</color>
+    <color name="color2">#f1c9ff</color>
+    <color name="color3">#faefc5</color>
+    <color name="color4">#c5e5fa</color>
 </resources>
