@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "128038813726",
+    "project_id": "plantbot-daf2f",
+    "storage_bucket": "plantbot-daf2f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:128038813726:android:f8d4f64136256c43dcae0f",
+        "android_client_info": {
+          "package_name": "com.dicoding.plantbot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "128038813726-t6ne0m8ekfprm41tjbjgpkpbi7lu638b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaYVi2bDtfTa_bFk-cUjKgQLbxK-FI44I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "128038813726-t6ne0m8ekfprm41tjbjgpkpbi7lu638b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

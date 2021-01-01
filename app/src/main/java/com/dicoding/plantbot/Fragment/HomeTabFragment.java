@@ -1,12 +1,15 @@
 package com.dicoding.plantbot.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -16,10 +19,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.dicoding.plantbot.Adapter.PlantTypeAdapter;
 import com.dicoding.plantbot.Model.PlantTypeModel;
 import com.dicoding.plantbot.R;
+import com.dicoding.plantbot.Species;
 
 import java.util.ArrayList;
 
-public class HomeTabFragment extends Fragment {
+public class HomeTabFragment extends Fragment implements View.OnClickListener {
 
     Context mContext;
     RecyclerView planttypeRecyclerview;
@@ -33,37 +37,29 @@ public class HomeTabFragment extends Fragment {
 
         mContext = this.getActivity();
 
-        planttype_recyclerview();
 
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
-    private void planttype_recyclerview() {
-        // Assign Variable
-        planttypeRecyclerview = getActivity().findViewById(R.id.plantType_recyclerview);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        //Create Integer Array
-        Integer[] img = {R.drawable.buah, R.drawable.bunga, R.drawable.sayur, R.drawable.herbal};
+        RelativeLayout btnMoveActivity = view.findViewById(R.id.spesies);
+        btnMoveActivity.setOnClickListener(this);
 
-        //Create String Array
-        String[] title = {"Buah-buahan", "Bunga", "Sayur-sayuran", "Herbal Keluarga"};
 
-        plantTypeModels = new ArrayList<>();
-        for (int i=0;i<img.length; i++) {
-            PlantTypeModel plantTypeModel = new PlantTypeModel(img[i],title[i]);
-            plantTypeModels.add(plantTypeModel);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.spesies:
+                Intent intent = new Intent(getActivity(), Species.class);
+                startActivity(intent);
+
+
         }
 
-        // horizontal layout desain
-        LinearLayoutManager layoutManager = new LinearLayoutManager(
-                HomeTabFragment.this.getActivity(), LinearLayoutManager.HORIZONTAL, false
-        );
-        planttypeRecyclerview.setLayoutManager(layoutManager);
-        planttypeRecyclerview.setItemAnimator(new DefaultItemAnimator());
-
-        //Initialize PlantTypeAdapter
-        plantTypeAdapter = new PlantTypeAdapter(HomeTabFragment.this.getActivity(), plantTypeModels);
-        //Set IngredientsAdapter to RecyclerView
-        planttypeRecyclerview.setAdapter(plantTypeAdapter);
     }
 }
