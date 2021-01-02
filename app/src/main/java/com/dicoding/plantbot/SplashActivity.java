@@ -29,7 +29,7 @@ public class SplashActivity extends FragmentActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashActivity.this.getApplicationContext(), HomeActivity.class);
+                Intent intent = new Intent(SplashActivity.this.getApplicationContext(), ListArticlesActivity.class);
                 SplashActivity.this.startActivity(intent);
             }
         },SPLASH_SCREEN);
