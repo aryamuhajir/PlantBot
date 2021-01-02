@@ -13,7 +13,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.dicoding.plantbot.Adapter.plantsAdapter;
 import com.dicoding.plantbot.Adapter.plantsAdapter2;
 
 import org.json.JSONArray;
@@ -22,7 +21,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Sayur extends AppCompatActivity implements plantsAdapter2.OnItemClickListener {
+public class Berbuah extends AppCompatActivity implements plantsAdapter2.OnItemClickListener{
 
     public static final String EXTRA_URL = "imageUrll";
     public static final String EXTRA_COMMON = "commonName";
@@ -55,7 +54,7 @@ public class Sayur extends AppCompatActivity implements plantsAdapter2.OnItemCli
 
 
     private void parseJSON() {
-        String url = "https://trefle.io/api/v1/plants?token=sXzUMEmU8A2XwBFbbudUmBW3NzRGhC5GlYSl0J2dm5o&filter_not[image_url]=null&filter[vegetable]=true&page=2";
+        String url = "https://trefle.io/api/v1/species?token=sXzUMEmU8A2XwBFbbudUmBW3NzRGhC5GlYSl0J2dm5o&filter[fruit_conspicuous]=true&q=banana";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -73,9 +72,9 @@ public class Sayur extends AppCompatActivity implements plantsAdapter2.OnItemCli
 
                                 mExampleList2.add(new plants(imageUrl, commonName, familyName, genus, year, scientificName));
                             }
-                            mExampleAdapter = new plantsAdapter2(Sayur.this, mExampleList2);
+                            mExampleAdapter = new plantsAdapter2(Berbuah.this, mExampleList2);
                             mRecyclerView.setAdapter(mExampleAdapter);
-                            mExampleAdapter.setOnItemClickListener(Sayur.this);
+                            mExampleAdapter.setOnItemClickListener(Berbuah.this);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
