@@ -1,34 +1,44 @@
 {
   "project_info": {
+
     "project_number": "886768897366",
     "firebase_url": "https://plantbot-688c2-default-rtdb.firebaseio.com",
     "project_id": "plantbot-688c2",
     "storage_bucket": "plantbot-688c2.appspot.com"
+
   },
   "client": [
     {
       "client_info": {
+
         "mobilesdk_app_id": "1:886768897366:android:1fc443197f4e58e2f65af7",
+
         "android_client_info": {
           "package_name": "com.dicoding.plantbot"
         }
       },
       "oauth_client": [
         {
+
           "client_id": "886768897366-o0tsgo47ovgtgfl3jptts28bqjvqaq93.apps.googleusercontent.com",
+
           "client_type": 3
         }
       ],
       "api_key": [
         {
+
           "current_key": "AIzaSyAZ7cnVe46-X7nC6TrXGVIv5vU5pIbEf2g"
+
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
+
               "client_id": "886768897366-o0tsgo47ovgtgfl3jptts28bqjvqaq93.apps.googleusercontent.com",
+
               "client_type": 3
             }
           ]
