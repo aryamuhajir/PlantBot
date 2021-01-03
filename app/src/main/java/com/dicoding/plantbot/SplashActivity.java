@@ -8,8 +8,9 @@ import android.os.Handler;
 import android.widget.ImageView;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.dicoding.plantbot.Fragment.AddPhotosFragment;
 
-public class SplashActivity extends FragmentActivity {
+    public class SplashActivity extends FragmentActivity {
 
     private static int SPLASH_SCREEN = 5000;
     ImageView imgLogo,fontLogo,splashImg;
@@ -29,7 +30,7 @@ public class SplashActivity extends FragmentActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashActivity.this.getApplicationContext(), ListArticlesActivity.class);
+                Intent intent = new Intent(SplashActivity.this.getApplicationContext(), HomeActivity.class);
                 SplashActivity.this.startActivity(intent);
             }
         },SPLASH_SCREEN);

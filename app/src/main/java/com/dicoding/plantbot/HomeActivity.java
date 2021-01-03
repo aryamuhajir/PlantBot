@@ -9,6 +9,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.dicoding.plantbot.Fragment.AddPhotosFragment;
 import com.dicoding.plantbot.Fragment.HomeTabFragment;
 import com.dicoding.plantbot.Fragment.ProfileTabFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -42,7 +43,7 @@ public class HomeActivity extends AppCompatActivity {
                     selectedFragment = new ProfileTabFragment();
                     break;
                 case R.id.nav_add:
-                    selectedFragment = new ProfileTabFragment();
+                    selectedFragment = new AddPhotosFragment();
                     break;
             }
 
