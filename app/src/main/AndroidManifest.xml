@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dicoding.plantbot">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,14 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".ListArticlesActivity"></activity>
+        <activity android:name=".Jadwal"></activity>
+        <activity android:name=".ListArticlesActivity" />
         <activity android:name=".Berbuah" />
         <activity android:name=".Sayur" />
         <activity android:name=".DetailActivity" />
         <activity android:name=".listplants" />
         <activity android:name=".Species" />
-
         <activity android:name=".ForgotPassword" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".LoginActivity" />
@@ -30,6 +29,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+
+        <receiver android:name=".AlertReceiver" />
 
         <meta-data
             android:name="preloaded_fonts"
