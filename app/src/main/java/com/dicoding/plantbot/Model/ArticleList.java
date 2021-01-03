@@ -1,9 +1,10 @@
 package com.dicoding.plantbot.Model;
 
-public class ArticleList  {
-
+public class ArticleList {
     public String articleName;
     public String imageUrl;
+
+
 
     public ArticleList(String articleName, String imageUrl) {
         this.articleName = articleName;
@@ -17,4 +18,5 @@ public class ArticleList  {
     public String getImageUrl() {
         return imageUrl;
     }
+
 }

@@ -19,15 +19,15 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListArticlesActivity extends AppCompatActivity {
+public class ArticleListActivity extends AppCompatActivity {
     RecyclerView rv;
     List<ArticleList>articleLists;
     DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_articles);
-        rv=findViewById(R.id.rec);
+        setContentView(R.layout.activity_article_list);
+        rv=findViewById(R.id.article_recyclerview);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
         DividerItemDecoration decoration=new DividerItemDecoration(this,DividerItemDecoration.VERTICAL);
