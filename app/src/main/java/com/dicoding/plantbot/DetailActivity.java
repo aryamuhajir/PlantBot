@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -17,7 +20,9 @@ import static com.dicoding.plantbot.Species.EXTRA_SCIENTIFIC;
 import static com.dicoding.plantbot.Species.EXTRA_URL;
 import static com.dicoding.plantbot.Species.EXTRA_YEAR;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
+    public static final String EXTRA_COMMON2 = "commonName";
+    public String commonName2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,7 @@ public class DetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String imageUrl = intent.getStringExtra(EXTRA_URL);
         String commonName = intent.getStringExtra(EXTRA_COMMON);
+        commonName2 = commonName;
         String familyCommonName = intent.getStringExtra(EXTRA_FAMILY);
         String genus = intent.getStringExtra(EXTRA_GENUS);
         Integer year = intent.getIntExtra(EXTRA_YEAR, 0);
@@ -50,6 +56,22 @@ public class DetailActivity extends AppCompatActivity {
         textYear.setText(Integer.toString(year));
         textScientific.setText(scientificName);
 
+        Button btnMoveActivity = findViewById(R.id.tambahkan);
+        btnMoveActivity.setOnClickListener(this);
 
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tambahkan:
+
+                Intent intent3 = new Intent(DetailActivity.this, Jadwal.class);
+                intent3.putExtra(EXTRA_COMMON2, commonName2);
+                startActivity(intent3);
+                break;
+
+        }
     }
 }

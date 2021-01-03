@@ -2,6 +2,7 @@ package com.dicoding.plantbot.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,6 +51,8 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener {
 
         RelativeLayout btnMoveActivity = view.findViewById(R.id.spesies);
         btnMoveActivity.setOnClickListener(this);
+        RelativeLayout btnMoveActivity1 = view.findViewById(R.id.identify);
+        btnMoveActivity1.setOnClickListener(this);
         CardView btnMoveActivity2 = view.findViewById(R.id.sayur);
         btnMoveActivity2.setOnClickListener(this);
         CardView btnMoveActivity3 = view.findViewById(R.id.sayur2);
@@ -61,6 +64,16 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.identify:
+                Intent intent1 = getContext().getPackageManager().getLaunchIntentForPackage("com.google.ar.lens");
+                if (intent1 == null) {
+                    intent1 = new Intent(Intent.ACTION_VIEW);
+                    intent1.setData(Uri.parse("market://details?id=" + "com.google.ar.lens"));
+                }
+                intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getContext().startActivity(intent1);
+                System.out.println(intent1);
+                break;
             case R.id.sayur2:
                 Intent intent3 = new Intent(getActivity(), Berbuah.class);
                 startActivity(intent3);
