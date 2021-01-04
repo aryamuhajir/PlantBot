@@ -17,37 +17,18 @@
             android:scaleType="centerCrop"
             android:src="@drawable/bg_profile_top"/>
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white">
+            android:fillViewport="true">
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tab_layout_profile"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/feed_recyclerview"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"/>
 
-            </com.google.android.material.tabs.TabLayout>
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ScrollView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/view_pager_profile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            </ScrollView>
-
-        </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
 

@@ -11,9 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".Jadwal"></activity>
-        <activity android:name=".ListArticlesActivity" />
+        <activity android:name=".FeedActivity"></activity>
+        <activity android:name=".Jadwal" />
+        <activity android:name=".ArticleListActivity" />
         <activity android:name=".Berbuah" />
         <activity android:name=".Sayur" />
         <activity android:name=".DetailActivity" />
