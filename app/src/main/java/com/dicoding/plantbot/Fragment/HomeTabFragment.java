@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dicoding.plantbot.Adapter.PlantTypeAdapter;
+import com.dicoding.plantbot.ArticleListActivity;
 import com.dicoding.plantbot.Berbuah;
 import com.dicoding.plantbot.Model.PlantTypeModel;
 import com.dicoding.plantbot.R;
@@ -57,6 +58,8 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener {
         btnMoveActivity2.setOnClickListener(this);
         CardView btnMoveActivity3 = view.findViewById(R.id.sayur2);
         btnMoveActivity3.setOnClickListener(this);
+        RelativeLayout btnMoveActivity4 = view.findViewById(R.id.article);
+        btnMoveActivity4.setOnClickListener(this);
 
 
     }
@@ -86,8 +89,10 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener {
                 Intent intent = new Intent(getActivity(), Species.class);
                 startActivity(intent);
                 break;
-
-
+            case R.id.article:
+                Intent intent4 = new Intent(getActivity(), ArticleListActivity.class);
+                startActivity(intent4);
+                break;
         }
 
     }

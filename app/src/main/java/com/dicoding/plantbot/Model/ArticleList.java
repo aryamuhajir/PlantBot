@@ -1,10 +1,13 @@
 package com.dicoding.plantbot.Model;
 
-public class ArticleList {
-    public String articleName;
-    public String imageUrl;
+public class ArticleList  {
 
+    String articleName;
+    String imageUrl;
 
+    public ArticleList(){
+
+    }
 
     public ArticleList(String articleName, String imageUrl) {
         this.articleName = articleName;
@@ -15,8 +18,15 @@ public class ArticleList {
         return articleName;
     }
 
+    public void setArticleName(String articleName) {
+        this.articleName = articleName;
+    }
+
     public String getImageUrl() {
         return imageUrl;
     }
 
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }

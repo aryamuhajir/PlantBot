@@ -1,15 +1,12 @@
 package com.dicoding.plantbot.Fragment;
 
 import android.content.ContentResolver;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
-import androidx.core.content.MimeTypeFilter;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
@@ -21,9 +18,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.dicoding.plantbot.FeedActivity;
 import com.dicoding.plantbot.Model.AddPhotosModel;
 import com.dicoding.plantbot.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -33,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
@@ -46,18 +44,17 @@ public class AddPhotosFragment extends Fragment implements View.OnClickListener 
     private EditText editName;
     private ImageView showImage;
     private ProgressBar progressBar;
-    Context mContext;
 
     private Uri imageUri;
 
     private StorageReference storageReference;
     private DatabaseReference databaseReference;
 
+    private StorageTask uploadTask;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-        mContext = this.getActivity();
 
         return inflater.inflate(R.layout.fragment_add_photos, container, false);
     }
@@ -87,7 +84,14 @@ public class AddPhotosFragment extends Fragment implements View.OnClickListener 
                 openFileChooser();
                 break;
             case R.id.button_upload_file:
-                uploadFile();
+                if (uploadTask != null && uploadTask.isInProgress()){
+                    Toast.makeText(AddPhotosFragment.this.getActivity(), "Proses mengupload", Toast.LENGTH_LONG).show();
+                }else {
+                    uploadFile();
+                    break;
+                }
+            case R.id.button_show_upload_file:
+                openFeedFragment();
                 break;
         }
     }
@@ -121,7 +125,7 @@ public class AddPhotosFragment extends Fragment implements View.OnClickListener 
             StorageReference fileReference = storageReference.child(System.currentTimeMillis()
             + "." + getFileExtension(imageUri));
 
-            fileReference.putFile(imageUri)
+            uploadTask = fileReference.putFile(imageUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -132,7 +136,13 @@ public class AddPhotosFragment extends Fragment implements View.OnClickListener 
                                     progressBar.setProgress(0);
                                 }
                             }, 5000);
-                            Toast.makeText(AddPhotosFragment.this.getActivity(), "Upload berhasil", Toast.LENGTH_LONG).show();
+                            Toast.makeText(AddPhotosFragment.this.getActivity(), "Upload foto berhasil", Toast.LENGTH_LONG).show();
+                            AddPhotosModel addPhotosModel = new AddPhotosModel(editName.getText().toString().trim(),
+                                    taskSnapshot.getStorage().getDownloadUrl().toString());
+                            String uploadId = databaseReference.push().getKey();
+                            databaseReference.child(uploadId).setValue(addPhotosModel);
+
+
 
                         }
                     })
@@ -153,6 +163,11 @@ public class AddPhotosFragment extends Fragment implements View.OnClickListener 
         } else {
             Toast.makeText(AddPhotosFragment.this.getActivity(), "Tidak ada file yang dipilih", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void openFeedFragment(){
+        Intent intent = new Intent(AddPhotosFragment.this.getActivity(), FeedActivity.class);
+        startActivity(intent);
     }
 
 }

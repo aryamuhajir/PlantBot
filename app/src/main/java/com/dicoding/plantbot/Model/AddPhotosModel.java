@@ -5,12 +5,13 @@ public class AddPhotosModel {
     private String mimageUrl;
 
     public AddPhotosModel(){
-
+    //Empty constructor needed
     }
 
     public AddPhotosModel(String name, String imageUrl) {
         if (name.trim().equals("")){
             name = "Nama Tidak Diberikan";
+
         }
 
         mname = name;
@@ -18,18 +19,22 @@ public class AddPhotosModel {
     }
 
     public String getName() {
+
         return mname;
     }
 
     public void setName(String name) {
-        this.mname = name;
+
+        mname = name;
     }
 
     public String getImageUrl() {
+
         return mimageUrl;
     }
 
     public void setImageUrl(String imageUrl) {
-        this.mimageUrl = imageUrl;
+
+        mimageUrl = imageUrl;
     }
 }

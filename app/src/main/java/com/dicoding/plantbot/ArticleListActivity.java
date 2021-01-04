@@ -20,18 +20,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleListActivity extends AppCompatActivity {
-    RecyclerView rv;
-    List<ArticleList>articleLists;
-    DatabaseReference databaseReference;
+    private RecyclerView rv;
+    private ArticleAdapter articleAdapter;
+    private List<ArticleList>articleLists;
+    private DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article_list);
-        rv=findViewById(R.id.article_recyclerview);
+        rv=findViewById(R.id.rec);
         rv.setHasFixedSize(true);
-        rv.setLayoutManager(new LinearLayoutManager(this));
-        DividerItemDecoration decoration=new DividerItemDecoration(this,DividerItemDecoration.VERTICAL);
-        rv.addItemDecoration(decoration);
+        LinearLayoutManager layoutManager = new LinearLayoutManager( this );
+        rv.setLayoutManager(layoutManager);
         articleLists=new ArrayList<>();
         databaseReference= FirebaseDatabase.getInstance().getReference("Articles");
         getImageData();
@@ -39,15 +39,19 @@ public class ArticleListActivity extends AppCompatActivity {
     }
 
     private void getImageData() {
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot di:dataSnapshot.getChildren()){
-                    ArticleList articleList=di.getValue(ArticleList.class);
+                    ArticleList articleList =new ArticleList();
+
+                    articleList.setImageUrl( di.child( "imageUrl" ).getValue().toString() );
+                    articleList.setArticleName( di.child( "articleName" ) .getValue().toString());
                     articleLists.add(articleList);
                 }
-                ArticleAdapter adapter=new ArticleAdapter(articleLists,getApplicationContext());
-                rv.setAdapter(adapter);
+                articleAdapter = new ArticleAdapter(getApplicationContext(), articleLists);
+                rv.setAdapter(articleAdapter);
+                articleAdapter.notifyDataSetChanged();
             }
 
             @Override
