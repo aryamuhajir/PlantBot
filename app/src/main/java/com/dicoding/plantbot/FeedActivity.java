@@ -56,10 +56,12 @@ public class FeedActivity extends AppCompatActivity{
                 for (DataSnapshot postSnapshot : snapshot.getChildren()){
                     AddPhotosModel addPhotosModel =new AddPhotosModel();
 
-                    addPhotosModel.setImageUrl( postSnapshot.child( "imageUrl" ).getValue().toString() );
-                    addPhotosModel.setName( postSnapshot.child( "nama" ) .getValue().toString());
+                    addPhotosModel.setImageUrl(postSnapshot.child("imageUrl").getValue().toString());
+                    addPhotosModel.setName(postSnapshot.child("name").getValue().toString());
+                    maddPhotosModels.add(addPhotosModel);
                 }
-
+                feedAdapter = new FeedAdapter(getApplicationContext(),maddPhotosModels);
+                feedRecyclerView.setAdapter(feedAdapter);
                 feedAdapter.notifyDataSetChanged();
                 feedProgressBar.setVisibility(View.INVISIBLE);
             }

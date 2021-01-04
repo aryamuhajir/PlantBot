@@ -11,7 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.dicoding.plantbot.FeedActivity;
+import com.dicoding.plantbot.Fragment.AddPhotosFragment;
 import com.dicoding.plantbot.Model.AddPhotosModel;
 import com.dicoding.plantbot.R;
 import com.squareup.picasso.Picasso;
@@ -39,18 +41,16 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull FeedViewHolder holder, final int position) {
-        AddPhotosModel uploadCurrent = maddPhotosModels.get(position);
-        holder.nama.setText(uploadCurrent.getName());
-        Picasso.get()
-                .load(uploadCurrent.getImageUrl())
-                .fit()
+        holder.nama.setText(maddPhotosModels.get(position).getName());
+        Glide.with(mcontext)
+                .load(maddPhotosModels.get(position).getImageUrl())
                 .centerCrop()
                 .into(holder.img);
 
         holder.itemView.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mcontext.getApplicationContext(), FeedActivity.class);
+                Intent intent = new Intent(mcontext.getApplicationContext(), AddPhotosFragment.class);
                 intent.putExtra("Name", maddPhotosModels.get( position ).getName());
                 intent.putExtra("imageUrl", maddPhotosModels.get( position ).getImageUrl());
                 view.getContext().startActivity( intent );
