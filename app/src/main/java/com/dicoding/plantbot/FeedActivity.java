@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -18,6 +19,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,9 +29,10 @@ public class FeedActivity extends AppCompatActivity{
 
     private RecyclerView feedRecyclerView;
     private FeedAdapter feedAdapter;
-
+    private Context mContext;
     private ProgressBar feedProgressBar;
 
+    private StorageReference storageReference;
     private DatabaseReference databaseReference;
     private List<AddPhotosModel> maddPhotosModels;
 
@@ -48,7 +52,7 @@ public class FeedActivity extends AppCompatActivity{
 
         maddPhotosModels = new ArrayList<>();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("uploads");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("uploads");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override

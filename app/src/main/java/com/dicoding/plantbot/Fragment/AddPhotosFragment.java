@@ -87,7 +87,7 @@ public class AddPhotosFragment extends Fragment implements View.OnClickListener 
                 if (uploadTask != null && uploadTask.isInProgress()){
                     Toast.makeText(AddPhotosFragment.this.getActivity(), "Proses mengupload", Toast.LENGTH_LONG).show();
                 }else {
-                    uploadFile();
+                    uploadFile(imageUri);
                     break;
                 }
             case R.id.button_show_upload_file:
@@ -109,7 +109,6 @@ public class AddPhotosFragment extends Fragment implements View.OnClickListener 
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null){
             imageUri = data.getData();
-
             Picasso.get().load(imageUri).into(showImage);
         }
     }
@@ -120,12 +119,12 @@ public class AddPhotosFragment extends Fragment implements View.OnClickListener 
         return mime.getExtensionFromMimeType(cR.getType(uri));
     }
 
-    private void uploadFile(){
-        if(imageUri != null){
+    private void uploadFile(Uri uri){
+        if(uri != null){
             StorageReference fileReference = storageReference.child(System.currentTimeMillis()
-            + "." + getFileExtension(imageUri));
+            + "." + getFileExtension(uri));
 
-            uploadTask = fileReference.putFile(imageUri)
+            fileReference.putFile(uri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -136,14 +135,11 @@ public class AddPhotosFragment extends Fragment implements View.OnClickListener 
                                     progressBar.setProgress(0);
                                 }
                             }, 5000);
-                            Toast.makeText(AddPhotosFragment.this.getActivity(), "Upload foto berhasil", Toast.LENGTH_LONG).show();
+                            Toast.makeText(AddPhotosFragment.this.getActivity(), "Upload foto berhasil", Toast.LENGTH_SHORT).show();
                             AddPhotosModel addPhotosModel = new AddPhotosModel(editName.getText().toString().trim(),
-                                    taskSnapshot.getStorage().getDownloadUrl().toString());
+                                    taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
                             String uploadId = databaseReference.push().getKey();
                             databaseReference.child(uploadId).setValue(addPhotosModel);
-
-
-
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {

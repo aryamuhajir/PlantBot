@@ -2,7 +2,6 @@ package com.dicoding.plantbot.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.dicoding.plantbot.ArticleDetailActivity;
 import com.dicoding.plantbot.ArticleListActivity;
-import com.dicoding.plantbot.FeedActivity;
 import com.dicoding.plantbot.Model.ArticleList;
 import com.dicoding.plantbot.R;
 
@@ -42,16 +41,17 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
     public void onBindViewHolder(ArticleAdapter.ViewHolder holder, final int position) {
         holder.articlename.setText(articleLists.get(position).getArticleName());
 
-        Glide.with(ct)
+        Glide.with(holder.itemView.getContext())
                 .load(articleLists.get(position).getImageUrl())
                 .into(holder.articleimg);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ct.getApplicationContext(), ArticleListActivity.class);
+                Intent intent = new Intent(ct.getApplicationContext(), ArticleDetailActivity.class);
                 intent.putExtra("articleName", articleLists.get(position).getArticleName());
                 intent.putExtra("imageUrl", articleLists.get(position).getImageUrl());
+                intent.putExtra("newsUrl", articleLists.get(position).getNewsUrl());
                 view.getContext().startActivity(intent);
             }
         });
@@ -60,6 +60,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
 
     @Override
     public int getItemCount() {
+
         return articleLists.size();
     }
 

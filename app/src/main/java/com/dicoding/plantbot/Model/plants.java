@@ -1,4 +1,4 @@
-package com.dicoding.plantbot;
+package com.dicoding.plantbot.Model;
 
 public class plants {
     private String image_url;
