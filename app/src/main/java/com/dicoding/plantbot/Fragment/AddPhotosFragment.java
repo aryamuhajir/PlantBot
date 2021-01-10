@@ -25,6 +25,7 @@ import com.dicoding.plantbot.Model.AddPhotosModel;
 import com.dicoding.plantbot.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -140,6 +141,12 @@ public class AddPhotosFragment extends Fragment implements View.OnClickListener 
                                     taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
                             String uploadId = databaseReference.push().getKey();
                             databaseReference.child(uploadId).setValue(addPhotosModel);
+
+                            Task<Uri> downloadUri = taskSnapshot.getStorage().getDownloadUrl();
+                            if(downloadUri.isSuccessful()) {
+                                String generatedFilePath = downloadUri.getResult().toString();
+                                System.out.println("## Stored path is " + generatedFilePath);
+                            }
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
