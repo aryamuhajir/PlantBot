@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.dicoding.plantbot.R;
-import com.dicoding.plantbot.plants;
+import com.dicoding.plantbot.Model.plants;
 
 import java.util.ArrayList;
 

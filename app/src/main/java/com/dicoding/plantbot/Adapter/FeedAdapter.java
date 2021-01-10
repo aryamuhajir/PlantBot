@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.dicoding.plantbot.FeedActivity;
 import com.dicoding.plantbot.Fragment.AddPhotosFragment;
 import com.dicoding.plantbot.Model.AddPhotosModel;
@@ -42,20 +43,21 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
     @Override
     public void onBindViewHolder(@NonNull FeedViewHolder holder, final int position) {
         holder.nama.setText(maddPhotosModels.get(position).getName());
-        Glide.with(mcontext)
+
+        Glide.with(holder.itemView.getContext())
                 .load(maddPhotosModels.get(position).getImageUrl())
-                .centerCrop()
+                .apply(new RequestOptions())
                 .into(holder.img);
 
-        holder.itemView.setOnClickListener( new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mcontext.getApplicationContext(), AddPhotosFragment.class);
-                intent.putExtra("Name", maddPhotosModels.get( position ).getName());
-                intent.putExtra("imageUrl", maddPhotosModels.get( position ).getImageUrl());
-                view.getContext().startActivity( intent );
+                intent.putExtra("name", maddPhotosModels.get(position).getName());
+                intent.putExtra("imageUrl", maddPhotosModels.get(position).getImageUrl());
+                view.getContext().startActivity(intent);
             }
-        } );
+        });
     }
 
     @Override

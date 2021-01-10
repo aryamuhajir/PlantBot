@@ -1,40 +1,35 @@
 package com.dicoding.plantbot.Model;
 
 public class AddPhotosModel {
-    private String mname;
-    private String mimageUrl;
+    String name;
+    String imageUrl;
 
     public AddPhotosModel(){
     //Empty constructor needed
     }
 
     public AddPhotosModel(String name, String imageUrl) {
-        if (name.trim().equals("")){
-            name = "Nama Tidak Diberikan";
-
-        }
-
-        mname = name;
-        mimageUrl = imageUrl;
+        this.name = name;
+        this.imageUrl = imageUrl;
     }
 
     public String getName() {
 
-        return mname;
+        return name;
     }
 
     public void setName(String name) {
 
-        mname = name;
+        this.name = name;
     }
 
     public String getImageUrl() {
 
-        return mimageUrl;
+        return imageUrl;
     }
 
     public void setImageUrl(String imageUrl) {
 
-        mimageUrl = imageUrl;
+        this.imageUrl = imageUrl;
     }
 }

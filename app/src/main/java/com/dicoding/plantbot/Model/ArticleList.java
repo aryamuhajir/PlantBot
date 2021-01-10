@@ -4,14 +4,16 @@ public class ArticleList  {
 
     String articleName;
     String imageUrl;
+    String newsUrl;
 
     public ArticleList(){
 
     }
 
-    public ArticleList(String articleName, String imageUrl) {
+    public ArticleList(String articleName, String imageUrl, String newsUrl) {
         this.articleName = articleName;
         this.imageUrl = imageUrl;
+        this.newsUrl = newsUrl;
     }
 
     public String getArticleName() {
@@ -28,5 +30,13 @@ public class ArticleList  {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getNewsUrl() {
+        return newsUrl;
+    }
+
+    public void setNewsUrl(String newsUrl) {
+        this.newsUrl = newsUrl;
     }
 }

@@ -44,14 +44,13 @@ public class ArticleListActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot di:dataSnapshot.getChildren()){
                     ArticleList articleList =new ArticleList();
-
-                    articleList.setImageUrl( di.child( "imageUrl" ).getValue().toString() );
-                    articleList.setArticleName( di.child( "articleName" ) .getValue().toString());
+                    articleList.setImageUrl(di.child("imageUrl").getValue(String.class));
+                    articleList.setArticleName(di.child("articleName").getValue(String.class));
+                    articleList.setNewsUrl(di.child("newsUrl").getValue(String.class));
                     articleLists.add(articleList);
                 }
-                articleAdapter = new ArticleAdapter(getApplicationContext(), articleLists);
+                articleAdapter = new ArticleAdapter(ArticleListActivity.this, articleLists);
                 rv.setAdapter(articleAdapter);
-                articleAdapter.notifyDataSetChanged();
             }
 
             @Override

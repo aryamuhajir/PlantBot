@@ -1,6 +1,5 @@
 package com.dicoding.plantbot.Fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -15,10 +14,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.dicoding.plantbot.HomeActivity;
 import com.dicoding.plantbot.LoginActivity;
 import com.dicoding.plantbot.R;
-import com.dicoding.plantbot.User;
+import com.dicoding.plantbot.Model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
