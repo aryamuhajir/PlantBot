@@ -133,6 +133,27 @@
                             android:text="Show Uploaded Photos"
                             android:textSize="24sp"
                             android:textColor="@color/black"/>
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="45dp"
+                            android:text="My Plant"
+                            android:textAllCaps="true" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/schedule"
+                        android:layout_width="110dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="5dp"
+                        android:background="@color/white"
+                        android:elevation="4dp">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="15dp"
+                            android:src="@drawable/schedule" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/recyclerview_show_upload"
