@@ -13,11 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.dicoding.plantbot.FeedActivity;
 import com.dicoding.plantbot.Fragment.AddPhotosFragment;
 import com.dicoding.plantbot.Model.AddPhotosModel;
 import com.dicoding.plantbot.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
