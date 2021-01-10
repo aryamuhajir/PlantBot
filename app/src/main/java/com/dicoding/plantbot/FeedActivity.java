@@ -32,7 +32,6 @@ public class FeedActivity extends AppCompatActivity{
     private Context mContext;
     private ProgressBar feedProgressBar;
 
-    private StorageReference storageReference;
     private DatabaseReference databaseReference;
     private List<AddPhotosModel> maddPhotosModels;
 
@@ -76,6 +75,5 @@ public class FeedActivity extends AppCompatActivity{
                 feedProgressBar.setVisibility(View.INVISIBLE);
             }
         });
-
     }
 }
