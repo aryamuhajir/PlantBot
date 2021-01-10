@@ -84,7 +84,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
-                        android:id="@+id/article"
+                        android:id="@+id/schedule"
                         android:layout_width="110dp"
                         android:layout_height="80dp"
                         android:layout_margin="5dp"
