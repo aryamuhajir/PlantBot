@@ -60,6 +60,8 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener {
         btnMoveActivity3.setOnClickListener(this);
         RelativeLayout btnMoveActivity4 = view.findViewById(R.id.article);
         btnMoveActivity4.setOnClickListener(this);
+        CardView btnMoveActivity5 = view.findViewById(R.id.article_image);
+        btnMoveActivity5.setOnClickListener(this);
 
 
     }
@@ -92,6 +94,10 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener {
             case R.id.article:
                 Intent intent4 = new Intent(getActivity(), ArticleListActivity.class);
                 startActivity(intent4);
+                break;
+            case R.id.article_image:
+                Intent intent5 = new Intent(getActivity(), ArticleListActivity.class);
+                startActivity(intent5);
                 break;
         }
 
