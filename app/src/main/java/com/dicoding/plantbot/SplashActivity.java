@@ -30,7 +30,7 @@ import com.dicoding.plantbot.Fragment.AddPhotosFragment;
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashActivity.this.getApplicationContext(), HomeActivity.class);
+                Intent intent = new Intent(SplashActivity.this.getApplicationContext(), LoginActivity.class);
                 SplashActivity.this.startActivity(intent);
             }
         },SPLASH_SCREEN);
