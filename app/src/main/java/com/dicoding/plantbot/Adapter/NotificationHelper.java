@@ -11,14 +11,17 @@ import androidx.core.app.NotificationCompat;
 
 import com.dicoding.plantbot.R;
 
+import java.util.ArrayList;
+
+import static com.dicoding.plantbot.Jadwal.namattt;
+
 public class NotificationHelper extends ContextWrapper {
     public static final String channelID = "channelID";
     public static final String channelName = "Channel Name";
-    public String tanaman;
+    public ArrayList<String> tanaman = new ArrayList<>();
     private NotificationManager mManager;
-    public NotificationHelper(Context base,String namat) {
+    public NotificationHelper(Context base) {
         super(base);
-        tanaman = namat;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createChannel();
         }
@@ -34,10 +37,10 @@ public class NotificationHelper extends ContextWrapper {
         }
         return mManager;
     }
-    public NotificationCompat.Builder getChannelNotification() {
+    public NotificationCompat.Builder getChannelNotification(int codea) {
         return new NotificationCompat.Builder(getApplicationContext(), channelID)
                 .setContentTitle("Waktunya Siram!")
-                .setContentText("Waktunya penyiraman untuk "+ tanaman)
+                .setContentText("Waktunya penyiraman untuk "+ namattt.get(codea))
                 .setSmallIcon(R.drawable.logo);
     }
 }
