@@ -16,10 +16,24 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintHorizontal_bias="0.139"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.049" />
+        app:layout_constraintVertical_bias="0.057" />
+
+    <ImageView
+        android:id="@+id/image_species"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_margin="30dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/buah"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.428" />
 
     <TextView
         android:id="@+id/textView3"
@@ -31,10 +45,10 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintHorizontal_bias="0.245"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.064" />
+        app:layout_constraintVertical_bias="0.508" />
 
     <TextView
         android:id="@+id/jadwall"
@@ -46,26 +60,25 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintHorizontal_bias="0.161"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.15" />
+        app:layout_constraintVertical_bias="0.556" />
 
     <Button
-        android:layout_width="300dp"
         android:id="@+id/btnTambah"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:letterSpacing="2"
         android:background="@android:color/black"
+        android:letterSpacing="2"
         android:text="TAMBAH"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.014" />
+        app:layout_constraintVertical_bias="0.076" />
 
     <Button
         android:id="@+id/btnHapus"
@@ -81,4 +94,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnTambah"
         app:layout_constraintVertical_bias="0.145" />
+
+    <Button
+        android:id="@+id/btnUpload"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/black"
+        android:letterSpacing="2"
+        android:text="UPLOAD"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnHapus"
+        app:layout_constraintVertical_bias="0.227" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,9 +11,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.dicoding.plantbot.Fragment.TimePickerFragment;
 
 import java.text.DateFormat;
@@ -23,11 +26,14 @@ import java.util.Calendar;
 
 
 import static com.dicoding.plantbot.DetailActivity.EXTRA_COMMON2;
+import static com.dicoding.plantbot.DetailActivity.EXTRA_URL2;
 
 public class Jadwal extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
     private TextView mTextView;
     public static final String EXTRA_COMMON22 = "commonName";
-    public static String  commonName2 = "Tes";
+    public static final String EXTRA_URL22 = "imageUrll";
+    public String commonName2 = "Tes";
+    public String imageUrl2;
     public static ArrayList<String> namattt = new ArrayList<>();
     public static int codex = 0;
     public static int angka;
@@ -43,9 +49,18 @@ public class Jadwal extends AppCompatActivity implements TimePickerDialog.OnTime
 
         Intent intent = getIntent();
         String commonName = intent.getStringExtra(EXTRA_COMMON2);
+        String imageUrl = intent.getStringExtra(EXTRA_URL2);
         commonName2 = commonName;
+        imageUrl2 = imageUrl;
         TextView textCommon = findViewById(R.id.textView4);
+        ImageView imageViewm = findViewById(R.id.image_species);
         textCommon.setText(commonName);
+        System.out.println(imageUrl);
+
+        Glide.with(this)
+                .load(imageUrl)
+                .apply(new RequestOptions())
+                .into(imageViewm);
 
         Button buttonTimePicker = findViewById(R.id.btnTambah);
         buttonTimePicker.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +75,14 @@ public class Jadwal extends AppCompatActivity implements TimePickerDialog.OnTime
             @Override
             public void onClick(View v) {
                 cancelAlarm();
+            }
+        });
+        Button buttonUpload = findViewById(R.id.btnUpload);
+        buttonUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent3 = new Intent(Jadwal.this, MyPlantsActivity.class);
+                startActivity(intent3);
             }
         });
     }
@@ -114,10 +137,4 @@ public class Jadwal extends AppCompatActivity implements TimePickerDialog.OnTime
         alarmManager.cancel(pendingIntent);
         mTextView.setText("......");
     }
-
-
-
-
-
-
 }

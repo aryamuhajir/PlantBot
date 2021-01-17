@@ -31,8 +31,6 @@ public class Species extends AppCompatActivity implements plantsAdapter.OnItemCl
     public static final String EXTRA_YEAR = "year";
     public static final String EXTRA_SCIENTIFIC = "scientificName";
 
-
-
     private RecyclerView mRecyclerView;
     private plantsAdapter mExampleAdapter;
     private ArrayList<plants> mExampleList;
@@ -96,9 +94,6 @@ public class Species extends AppCompatActivity implements plantsAdapter.OnItemCl
         detailIntent.putExtra(EXTRA_GENUS, clickedItem.getGenus());
         detailIntent.putExtra(EXTRA_YEAR, clickedItem.getYear());
         detailIntent.putExtra(EXTRA_SCIENTIFIC, clickedItem.getScientific_name());
-
-
-
 
         startActivity(detailIntent);
 

@@ -22,7 +22,9 @@ import static com.dicoding.plantbot.Species.EXTRA_YEAR;
 
 public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String EXTRA_COMMON2 = "commonName";
+    public static final String EXTRA_URL2 = "imageUrll";
     public String commonName2;
+    public String imageUrl2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         String imageUrl = intent.getStringExtra(EXTRA_URL);
         String commonName = intent.getStringExtra(EXTRA_COMMON);
         commonName2 = commonName;
+        imageUrl2 = imageUrl;
         String familyCommonName = intent.getStringExtra(EXTRA_FAMILY);
         String genus = intent.getStringExtra(EXTRA_GENUS);
         Integer year = intent.getIntExtra(EXTRA_YEAR, 0);
@@ -58,20 +61,17 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
         Button btnMoveActivity = findViewById(R.id.tambahkan);
         btnMoveActivity.setOnClickListener(this);
-
-
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tambahkan:
-
                 Intent intent3 = new Intent(DetailActivity.this, Jadwal.class);
                 intent3.putExtra(EXTRA_COMMON2, commonName2);
+                intent3.putExtra(EXTRA_URL2, imageUrl2);
                 startActivity(intent3);
                 break;
-
         }
     }
 }

@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import com.dicoding.plantbot.FeedActivity;
 import com.dicoding.plantbot.Jadwal;
+import com.dicoding.plantbot.MyPlantsActivity;
 import com.dicoding.plantbot.R;
 import com.dicoding.plantbot.Sayur;
 import com.dicoding.plantbot.Species;
@@ -53,30 +54,20 @@ public class ProfileTabFragment extends Fragment implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.schedule:
-                Intent intent1 = getContext().getPackageManager().getLaunchIntentForPackage("com.e_carter.userroles");
-                if (intent1 == null) {
-                    intent1 = new Intent(Intent.ACTION_VIEW);
-                    intent1.setData(Uri.parse("market://details?id=" + "com.google.ar.lens"));
-                }
-                intent1.putExtra(Intent.ACTION_SEND , Uri.parse("https://bs.floristic.org/image/o/7210dfc0c2a48bdde194bef37c7b7956974bc1b7"));
-                getContext().startActivity(intent1);
+                Intent intent7 = new Intent(getActivity(), Species.class);
+                startActivity(intent7);
                 break;
             case R.id.feed:
                 Intent intent2 = new Intent(getActivity(), FeedActivity.class);
                 startActivity(intent2);
                 break;
             case R.id.myplant:
-                Intent intent3 = new Intent(getActivity(), Species.class);
+                Intent intent3 = new Intent(getActivity(), MyPlantsActivity.class);
                 startActivity(intent3);
                 break;
             case R.id.schedule_image:
-                Intent intent4 = getContext().getPackageManager().getLaunchIntentForPackage("com.e_carter.userroles");
-                if (intent4 == null) {
-                    intent4 = new Intent(Intent.ACTION_VIEW);
-                    intent4.setData(Uri.parse("market://details?id=" + "com.google.ar.lens"));
-                }
-                intent4.putExtra(Intent.ACTION_SEND , Uri.parse("https://bs.floristic.org/image/o/7210dfc0c2a48bdde194bef37c7b7956974bc1b7"));
-                getContext().startActivity(intent4);
+                Intent intent8 = new Intent(getActivity(), Species.class);
+                startActivity(intent8);
                 break;
             case R.id.show_photo:
                 Intent intent5 = new Intent(getActivity(), FeedActivity.class);

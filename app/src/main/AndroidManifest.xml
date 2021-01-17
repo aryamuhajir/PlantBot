@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ArticleDetailActivity"></activity>
+        <activity android:name=".MyPlantsActivity"></activity>
+        <activity android:name=".ArticleDetailActivity" />
         <activity android:name=".FeedActivity" />
         <activity android:name=".Jadwal" />
         <activity android:name=".ArticleListActivity" />
